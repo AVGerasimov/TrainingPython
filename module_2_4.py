@@ -18,4 +18,4 @@ for i in numbers: #перебор исходного списка
 print("prime", primes)
 print("not prime", not_primes)
 
-
+# new comment
