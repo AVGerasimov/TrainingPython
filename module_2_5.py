@@ -1,6 +1,8 @@
 __author__ = 'Андрей Герасимов'
 
 def get_matrix(n, m, value):
+    if n<1 or m<1 :
+        return []
     matrix = []
     for i in range(n):
         Addlist = [0]*m
