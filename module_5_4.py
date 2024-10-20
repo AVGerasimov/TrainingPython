@@ -4,7 +4,9 @@ class House:
     houses_history = []
 
     def __new__(cls, *args):
-        cls.houses_history.append(args[0])
+        if args[0] != '' and args[0] != None: # если аргумент args[0] не пустой, то проверяем, не было ли в истории такого объекта
+            if (args[0] in cls.houses_history) == False:
+                cls.houses_history.append(args[0])
         return object.__new__(cls)
 
 
@@ -85,6 +87,7 @@ class House:
 
 
     def __del__(self):
+        # при удалении объекта выдается поясняющий комментарий, какой именно объект был удален
         print(f"{self.name} снесён, но он останется в истории")
 
 
@@ -98,6 +101,7 @@ h2 = House('ЖК Акация', 20)
 print(House.houses_history)
 h3 = House('ЖК Матрёшки', 20)
 print(House.houses_history)
+
 
 del h2
 del h3
