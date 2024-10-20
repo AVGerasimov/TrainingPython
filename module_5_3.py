@@ -12,38 +12,41 @@ class House:
         else:
             print('Такого этажа не существует')
 
-
     def __len__(self):
         return(self.number_of_floors)
 
     def __str__(self):
         return (f'Название: {self.name} кол-во этажей: {self.number_of_floors}')
 
-
+# методы перегрузки операторов для сравнения и арифметических операций с учетом количества этажей
     def __eq__(self, other):
         if isinstance(other, House):
-            return (self.number_of_floors == other.number_of_floors)
+            return (self.number_of_floors == other.number_of_floors) # должен возвращать True, если количество этажей одинаковое у self и у other
 
     def __lt__(self, other):
         if isinstance(other, House):
-            return (self.number_of_floors < other.number_of_floors)
+            return (self.number_of_floors < other.number_of_floors) # должен возвращать True, если количество этажей  self меньше чем other
 
     def __le__(self, other):
         if isinstance(other, House):
-            return (self.number_of_floors <= other.number_of_floors)
+            return (self.number_of_floors <= other.number_of_floors) # должен возвращать True, если количество этажей  self меньше или равно  other
 
     def __gt__(self, other):
         if isinstance(other, House):
-            return (self.number_of_floors > other.number_of_floors)
+            return (self.number_of_floors > other.number_of_floors) # должен возвращать True, если количество этажей  self больше  other
 
     def __ge__(self, other):
         if isinstance(other, House):
-            return (self.number_of_floors >= other.number_of_floors)
+            return (self.number_of_floors >= other.number_of_floors) # должен возвращать True, если количество этажей  self больше или равно  other
 
     def __ne__(self, other):
         if isinstance(other, House):
-            return (self.number_of_floors != other.number_of_floors)
+            return (self.number_of_floors != other.number_of_floors)  # должен возвращать True, если количество этажей  self не равно  other
 
+
+
+
+# Перегрузка четырех основных математических операторов
 
     def __sub__(self, other):
         if isinstance(other, int):
@@ -67,6 +70,7 @@ class House:
             return (self)
 
 
+#   Методы __iadd__ и __radd__ не обязательно описывать заново, достаточно вернуть значение вызова __add__
     def __iadd__(self, other):
         return (self+other)
 
@@ -100,4 +104,7 @@ print(h1 >= h2) # __ge__
 print(h1 < h2) # __lt__
 print(h1 <= h2) # __le__
 print(h1 != h2) # __ne__
+
+
+
 
