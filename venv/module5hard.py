@@ -16,29 +16,38 @@ class Video:
         bool = False
 
 class UrTube:
-    users = [User]
-    videos = [Video]
 
     def __init__(self):
-        pass
+        self.users = []
+        videos = []
+
+
+    def register (self, nickname, password, age):
+        if len(self.users)==0:# если не было ни одного пользователя в списке, добавляем сразу
+            x = User(nickname, password, age)
+            self.users.append(x)
+
+
+        for i in self.users:
+            if (i.nickname != nickname and i.password != password and i.age != age):
+                x = User(nickname, password, age)
+                self.users.append(x)
+                break
 
 
     def log_in(self,nickname, password ):
         for i in self.users:
             if i.nickname == nickname and i.password == password:
                 current_user = i
-                print("OK")
-
-    def register (self, nickname, password, age):
-        for i in self.users:
-            if (i.nickname != nickname and i.password != password and i.age != age):
-                x = User(nickname, password, age)
-                self.users.append(x)
-
+                print("Есть такой пользователь!")
 
 
 ur = UrTube()
-#ur.log_in('Oleg','kolbasa')
-#ur.register('Oleg','kolbasa', 35)
+ur.register('Oleg','kolbasa', 35)
+ur.register('Sanya','kolbasa2', 26)
+ur.register('Nik','kolbasa21', 41)
+for i in ur.users:
+    print(i.nickname)
+ur.log_in('Oleg','kolbasa')
 
 
