@@ -3,8 +3,11 @@ import multiprocessing
 from multiprocessing import Process
 from multiprocessing import Pool
 
+timemulti = 0
 
 def  read_info(name):
+    global timemulti
+    t1 = time.time()
     all_data = []
     with open (name,'r', encoding='utf-8') as file:
         line = file.readline()
@@ -14,6 +17,11 @@ def  read_info(name):
             if line != '':
                 all_data.append(line)
     print(f" прочитан файл номер {file.name}")
+    t2 = time.time()
+    delta = t2 - t1
+    print(f" Время чтения файла {file.name} = {delta}")
+    timemulti+=delta
+    print(f"timemulti={timemulti}")
     return all_data
 
 
@@ -39,10 +47,8 @@ if __name__ == '__main__':
         # Применение функции read_info к каждому элементу в списке параллельно
         results = pool.map(read_info, filenames)
 
-t2 = time.time()
-print(f' Конец многопроцессорного способа, время = {t2}')
-delta = t2-t1
-print(f' Время многопроцессорный способ чтения = {delta}')
+
+print(f' Время многопроцессорный способ чтения = {timemulti}')
 
 
 
