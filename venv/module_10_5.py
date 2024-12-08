@@ -21,21 +21,17 @@ def read_info(name):
 filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
 
-
-t1 = time.time()
-print(f' Начало линейного способа, время = {t1}')
-for i in range(1, 5):
-    read_info(filenames[i-1])
-    print(f" прочитан файл номер {i-1}")
-t2 = time.time()
-print(t2)
-delta = t2-t1
-print(f' время линейный способ чтения, результат = {delta}')
-
-
-
-
 if __name__ == '__main__':
+    t1 = time.time()
+    print(f' Начало линейного способа, время = {t1}')
+    for i in range(1, 5):
+        read_info(filenames[i-1])
+        print(f" прочитан файл номер {i-1}")
+    t2 = time.time()
+    print(t2)
+    delta = t2-t1
+    print(f' время линейный способ чтения, результат = {delta}')
+
     t1 = time.time()
     print(f'Начало многопроцессорного способа, время = {t1:.3f} с.')
 
